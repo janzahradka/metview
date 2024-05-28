@@ -9,17 +9,17 @@
 <body>
     <div class="menu-container">
         <div class="dropdown">
-            <button class="dropbtn">Vyber vrstvu</button>
-            <div class="dropdown-content">
-                <a href="#" onclick="loadImages('oblc')">Oblačnost</a>
-                <a href="#" onclick="loadImages('pocasi')">Srážky</a>
-                <a href="#" onclick="loadImages('cu')">Čistá + Cu</a>
-                <a href="#" onclick="loadImages('bascu')">Kumuly</a>
-                <a href="#" onclick="loadImages('tlcu')">Toušťka Cu</a>
-                <a href="#" onclick="loadImages('tmp2m')">Teplota 2m</a>
-                <a href="#" onclick="loadImages('vlhk700')">Vlhkost 3km</a>
-                <a href="#" onclick="loadImages('vitr10m')">Vítr 10m</a>
-                <a href="#" onclick="loadImages('narazy')">Nárazy</a>
+            <button class="dropbtn" onclick="toggleDropdown()">Vyber vrstvu</button>
+            <div id="dropdown-content" class="dropdown-content">
+                <a href="#" onclick="loadImages('oblc'); toggleDropdown()">Oblačnost</a>
+                <a href="#" onclick="loadImages('pocasi'); toggleDropdown()">Srážky</a>
+                <a href="#" onclick="loadImages('cu'); toggleDropdown()">Čistá + Cu</a>
+                <a href="#" onclick="loadImages('bascu'); toggleDropdown()">Kumuly</a>
+                <a href="#" onclick="loadImages('tlcu'); toggleDropdown()">Toušťka Cu</a>
+                <a href="#" onclick="loadImages('tmp2m'); toggleDropdown()">Teplota 2m</a>
+                <a href="#" onclick="loadImages('vlhk700'); toggleDropdown()">Vlhkost 3km</a>
+                <a href="#" onclick="loadImages('vitr10m'); toggleDropdown()">Vítr 10m</a>
+                <a href="#" onclick="loadImages('narazy'); toggleDropdown()">Nárazy</a>
             </div>
         </div>
     </div>

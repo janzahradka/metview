@@ -54,4 +54,22 @@ document.addEventListener('DOMContentLoaded', function () {
         currentImageIndex = parseInt(event.target.value, 10); // Update the current image index
         imageDisplay.src = imageCache[currentImageIndex];
     });
+    window.toggleDropdown = function() {
+        const dropdownContent = document.getElementById('dropdown-content');
+        if (dropdownContent.style.display === 'block') {
+            dropdownContent.style.display = 'none';
+        } else {
+            dropdownContent.style.display = 'block';
+        }
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            const dropdownContent = document.getElementById('dropdown-content');
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+            }
+        }
+    }
 });
