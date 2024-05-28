@@ -50,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
         slider.max = numberOfImages; // Set the max value of the slider dynamically
         preloadImages(imageUrls, currentImageIndex); // Pass the current image index
 
-        // Hide the dropdown if the window width is less than 1500 pixels
+        // Hide the dropdown if the window width is less than 1340 pixels
         const windowWidth = window.innerWidth;
-        if (windowWidth < 1500) {
+        if (windowWidth < 1340) {
             const dropdownContent = document.getElementById('dropdown-content');
             dropdownContent.style.display = 'none';
         }
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!event.target.matches('.dropbtn')) {
             const dropdownContent = document.getElementById('dropdown-content');
             const windowWidth = window.innerWidth;
-            if (dropdownContent.style.display === 'block' && windowWidth < 1500) {
+            if (dropdownContent.style.display === 'block' && windowWidth < 1340) {
                 dropdownContent.style.display = 'none';
             }
         }
