@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Slider with Menu</title>
+    <title>Image Slider with Dropdown Menu</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="menu-container">
-        <button class="menu-button" onclick="loadImages('oblc')">Oblačnost</button>
-        <button class="menu-button" onclick="loadImages('pocasi')">Srážky</button>
-        <button class="menu-button" onclick="loadImages('cu')">Čistá + Cu</button>
-        <button class="menu-button" onclick="loadImages('bascu')">Kumuly</button>
-        <button class="menu-button" onclick="loadImages('tlcu')">Tloušťka Cu</button>
-        <button class="menu-button" onclick="loadImages('tmp2m')">Teplota 2m</button>
-        <button class="menu-button" onclick="loadImages('vlhk700')">Vlhkost 3km</button>
-        <button class="menu-button" onclick="loadImages('vitr10m')">Vítr 10m</button>
-        <button class="menu-button" onclick="loadImages('narazy')">Nárazy</button>
+        <div class="dropdown">
+            <button class="dropbtn">Vyber vrstvu</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="loadImages('oblc')">Oblačnost</a>
+                <a href="#" onclick="loadImages('pocasi')">Srážky</a>
+                <a href="#" onclick="loadImages('cu')">Čistá + Cu</a>
+                <a href="#" onclick="loadImages('bascu')">Kumuly</a>
+                <a href="#" onclick="loadImages('tlcu')">Toušťka Cu</a>
+                <a href="#" onclick="loadImages('tmp2m')">Teplota 2m</a>
+                <a href="#" onclick="loadImages('vlhk700')">Vlhkost 3km</a>
+                <a href="#" onclick="loadImages('vitr10m')">Vítr 10m</a>
+                <a href="#" onclick="loadImages('narazy')">Nárazy</a>
+            </div>
+        </div>
     </div>
     <div class="slider-container">
         <div class="image-wrapper">
