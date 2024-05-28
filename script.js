@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
         'tlcu': 'tlcu',
         'vlhk700': 'vlhk700',
         'vitr10m': 'vitr10m',
-        'narazy': 'narazy'
+        'narazy': 'narazy',
+        'vi950': 'vi950',
+        'vi850': 'vi850',
+        'vi700': 'vi700',
+        'vi600': 'vi600',
+        'vi500': 'vi500'
+
     }
     const serverUrl = 'https://server1.meteopress.cz/icond2/';
     const extension = '.png';
