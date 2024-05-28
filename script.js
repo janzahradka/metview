@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         'vi700': 'vi700',
         'vi600': 'vi600',
         'vi500': 'vi500'
-
     }
     const serverUrl = 'https://server1.meteopress.cz/icond2/';
     const extension = '.png';
@@ -23,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const imageDisplay = document.getElementById('image-display');
     const slider = document.getElementById('slider');
     let currentImageIndex = 1; // Store the current slider position
+    const imageWidth = 1024;
 
     function generateImageUrls(setType) {
         const urls = [];
@@ -50,6 +50,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const imageUrls = generateImageUrls(setType);
         slider.max = numberOfImages; // Set the max value of the slider dynamically
         preloadImages(imageUrls, currentImageIndex); // Pass the current image index
+
+        // Hide the dropdown if the window width is less than 1.25 times the image width
+        const windowWidth = window.innerWidth;
+        if (windowWidth <= imageWidth * 1.25) {
+            const dropdownContent = document.getElementById('dropdown-content');
+            dropdownContent.style.display = 'none';
+        }
     }
 
     // Load the default set of images (Oblacnost)
@@ -60,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentImageIndex = parseInt(event.target.value, 10); // Update the current image index
         imageDisplay.src = imageCache[currentImageIndex];
     });
+
     window.toggleDropdown = function() {
         const dropdownContent = document.getElementById('dropdown-content');
         if (dropdownContent.style.display === 'block') {
@@ -67,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             dropdownContent.style.display = 'block';
         }
-    }
+    };
 
     // Close the dropdown if the user clicks outside of it
     window.onclick = function(event) {
@@ -77,5 +85,5 @@ document.addEventListener('DOMContentLoaded', function () {
                 dropdownContent.style.display = 'none';
             }
         }
-    }
+    };
 });
