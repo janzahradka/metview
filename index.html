@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider with Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="menu-container">
+        <button class="menu-button" onclick="loadImages('oblacnost')">Oblacnost</button>
+        <button class="menu-button" onclick="loadImages('pocasi')">Pocasi</button>
+        <button class="menu-button" onclick="loadImages('kumuly')">Kumuly</button>
+    </div>
+    <div class="slider-container">
+        <img id="image-display" src="" alt="Weather Image">
+        <input type="range" id="slider" min="1" value="1" step="1">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
