@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const imageDisplay = document.getElementById('image-display');
     const slider = document.getElementById('slider');
     let currentImageIndex = 1; // Store the current slider position
-    const imageWidth = 1024;
 
     function generateImageUrls(setType) {
         const urls = [];
@@ -51,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
         slider.max = numberOfImages; // Set the max value of the slider dynamically
         preloadImages(imageUrls, currentImageIndex); // Pass the current image index
 
-        // Hide the dropdown if the window width is less than 1.25 times the image width
+        // Hide the dropdown if the window width is less than 1500 pixels
         const windowWidth = window.innerWidth;
-        if (windowWidth <= imageWidth * 1.25) {
+        if (windowWidth < 1500) {
             const dropdownContent = document.getElementById('dropdown-content');
             dropdownContent.style.display = 'none';
         }
@@ -69,11 +68,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     window.toggleDropdown = function() {
+        const windowWidth = window.innerWidth;
         const dropdownContent = document.getElementById('dropdown-content');
-        if (dropdownContent.style.display === 'block') {
-            dropdownContent.style.display = 'none';
+        if (windowWidth >= 1340) {
+            dropdownContent.style.display = 'block'; // Always visible on wide screens
         } else {
-            dropdownContent.style.display = 'block';
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+            } else {
+                dropdownContent.style.display = 'block';
+            }
         }
     };
 
@@ -81,7 +85,8 @@ document.addEventListener('DOMContentLoaded', function () {
     window.onclick = function(event) {
         if (!event.target.matches('.dropbtn')) {
             const dropdownContent = document.getElementById('dropdown-content');
-            if (dropdownContent.style.display === 'block') {
+            const windowWidth = window.innerWidth;
+            if (dropdownContent.style.display === 'block' && windowWidth < 1500) {
                 dropdownContent.style.display = 'none';
             }
         }
