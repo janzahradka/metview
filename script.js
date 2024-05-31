@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const groups = {
-        'icon-d2': {
-            label: 'ICON D2',
+        'icon-d2-thermal': {
+            label: 'Horác ICON D2 Termika',
             serverUrl: 'https://server1.meteopress.cz/icond2/',
             urlPattern: '${serverUrl}${productType}${imageIndex}${extension}',
             product: {
@@ -14,6 +14,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 'pocasi': {
                     label: 'Srážky',
+                    step: 1,
+                    extension: '.png',
+                    numberOfImages: 48,
+                    thumbnailIndex: 10
+                },
+                'tmp2m': {
+                    label: 'Teplota 2m',
+                    step: 1,
+                    extension: '.png',
+                    numberOfImages: 48,
+                    thumbnailIndex: 10
+                },
+                'vitr10m': {
+                    label: 'Vítr 10m',
                     step: 1,
                     extension: '.png',
                     numberOfImages: 48,
@@ -40,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     numberOfImages: 48,
                     thumbnailIndex: 10
                 },
-                'tmp2m': {
-                    label: 'Teplota 2m',
+                'vi850': {
+                    label: 'Vítr 1,5km',
                     step: 1,
                     extension: '.png',
                     numberOfImages: 48,
@@ -54,6 +68,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     numberOfImages: 48,
                     thumbnailIndex: 10
                 },
+            }
+        },
+        'icon-d2-wind': {
+            label: 'Horác ICON D2 Vítr',
+            serverUrl: 'https://server1.meteopress.cz/icond2/',
+            urlPattern: '${serverUrl}${productType}${imageIndex}${extension}',
+            product: {
                 'vitr10m': {
                     label: 'Vítr 10m',
                     step: 1,
@@ -111,14 +132,14 @@ document.addEventListener('DOMContentLoaded', function () {
             urlPattern: '${serverUrl}${imageIndex}${productType}${extension}',
             product: {
                 '_2': {
-                    label: 'T850hpa',
+                    label: 'Teplota 850hpa',
                     step: 3,
                     extension: '.png',
                     numberOfImages: 129,
                     thumbnailIndex: 10
                 },
                 '_1': {
-                    label: 'h500hpa',
+                    label: 'Výška hladiny 500hpa',
                     step: 3,
                     extension: '.png',
                     numberOfImages: 129,
@@ -126,6 +147,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 '_3': {
                     label: 'Vítr 850hpa',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129,
+                    thumbnailIndex: 10
+                },
+                '_4': {
+                    label: 'Srážky',
                     step: 3,
                     extension: '.png',
                     numberOfImages: 129,
@@ -152,6 +180,20 @@ document.addEventListener('DOMContentLoaded', function () {
             serverUrl: 'https://www.wetterzentrale.de/maps/GFSOPME06_',
             urlPattern: '${serverUrl}${imageIndex}${productType}${extension}',
             product: {
+                 '_4': {
+                    label: 'Srážky',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129,
+                    thumbnailIndex: 10
+                },
+                '_5': {
+                    label: 'Teplota 2m',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129,
+                    thumbnailIndex: 10
+                },
                 '_9': {
                     label: 'Vítr 10m',
                     step: 3,
@@ -168,6 +210,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 },
                 '_11': {
                     label: 'CAPE',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129,
+                    thumbnailIndex: 10
+                },
+                '_24': {
+                    label: 'Celková oblačnost',
                     step: 3,
                     extension: '.png',
                     numberOfImages: 129,
@@ -198,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-    let currentGroup = 'icon-d2';
+    let currentGroup = 'icon-d2-thermal';
     let currentProductType = 'oblc';
     const imageCache = {};
     const imageDisplay = document.getElementById('image-display');

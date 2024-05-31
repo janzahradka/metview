@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=0.5, maximum-scale=3">
-    <title>Image Slider with Dropdown Menu</title>
+    <title>MeteoViewer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#ffffff">
@@ -19,12 +19,13 @@
         <input type="range" id="slider" min="1" value="1" step="1">
     </div>
     <div class="menu-container">
-        <div class="dropdown left">
-            <button class="dropbtn" onclick="toggleGroupDropdown()">Model</button>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleGroupDropdown()">Vyber model</button>
             <div id="group-dropdown-content" class="dropdown-content dropdown-content-up">
-                <a href="#" onclick="setGroup('icon-d2'); toggleGroupDropdown()">ICON D2</a>
-                <a href="#" onclick="setGroup('WetterzentraleEurope'); toggleGroupDropdown()">Wetterzentrale E</a>
-                <a href="#" onclick="setGroup('WetterzentraleCentralEurope'); toggleGroupDropdown()">Wetterzentrale CE</a>
+                <a href="#" onclick="setGroup('icon-d2-thermal'); toggleGroupDropdown()">Horác ICON D2 Termika</a>
+                <a href="#" onclick="setGroup('icon-d2-wind'); toggleGroupDropdown()">Horác ICON D2 Vítr</a>
+                <a href="#" onclick="setGroup('WetterzentraleEurope'); toggleGroupDropdown()">Wetterzentrale.de Evropa</a>
+                <a href="#" onclick="setGroup('WetterzentraleCentralEurope'); toggleGroupDropdown()">Wetterzentrale.de Střední Evropa</a>
             </div>
         </div>
     </div>

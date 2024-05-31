@@ -53,7 +53,7 @@ header h1 {
 
 .menu-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center; /* Center the Model menu */
     width: 100%;
     max-width: 1024px;
     margin-top: 30px;
@@ -131,6 +131,6 @@ header h1 {
 
 @media (orientation: landscape) {
     .slider-container, .product-grid {
-        max-width: 40%; /* Ensure layout adapts in landscape mode */
+        max-width: 40%; /* Set max-width to 40% for landscape mode */
     }
 }
