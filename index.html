@@ -9,27 +9,26 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    <h1 id="title"></h1>
+    <header>
+        <h1 id="title"></h1>
+    </header>
     <div class="slider-container">
         <div class="image-wrapper">
             <img id="image-display" src="" alt="Weather Image">
         </div>
         <input type="range" id="slider" min="1" value="1" step="1">
-        <div class="menu-container">
-            <div class="dropdown left">
-                <button class="dropbtn" onclick="toggleGroupDropdown()">Model</button>
-                <div id="group-dropdown-content" class="dropdown-content dropdown-content-up">
-                    <a href="#" onclick="setGroup('icon-d2'); toggleGroupDropdown()">ICON D2</a>
-                    <a href="#" onclick="setGroup('WetterzentraleEurope'); toggleGroupDropdown()">Wetterzentrale E</a>
-                    <a href="#" onclick="setGroup('WetterzentraleCentralEurope'); toggleGroupDropdown()">Wetterzentrale CE</a>
-                </div>
-            </div>
-            <div class="dropdown right">
-                <button class="dropbtn" onclick="toggleDropdown()">Produkt</button>
-                <div id="dropdown-content" class="dropdown-content dropdown-content-up"></div>
+    </div>
+    <div class="menu-container">
+        <div class="dropdown left">
+            <button class="dropbtn" onclick="toggleGroupDropdown()">Model</button>
+            <div id="group-dropdown-content" class="dropdown-content dropdown-content-up">
+                <a href="#" onclick="setGroup('icon-d2'); toggleGroupDropdown()">ICON D2</a>
+                <a href="#" onclick="setGroup('WetterzentraleEurope'); toggleGroupDropdown()">Wetterzentrale E</a>
+                <a href="#" onclick="setGroup('WetterzentraleCentralEurope'); toggleGroupDropdown()">Wetterzentrale CE</a>
             </div>
         </div>
     </div>
+    <div class="product-grid" id="product-grid"></div>
     <script src="script.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
@@ -66,6 +65,5 @@
         });
       });
     </script>
-
 </body>
 </html>
