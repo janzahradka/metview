@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'icon-d2': {
             label: 'ICON D2',
             serverUrl: 'https://server1.meteopress.cz/icond2/',
+            urlPattern: '${serverUrl}${productType}${imageIndex}${extension}',
             product: {
                 'oblc': {
                     label: 'Oblačnost',
@@ -90,14 +91,82 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
         },
-        'wetterzentrale': {
-            label: 'Wetterzentrale',
-            serverUrl: 'https://www.wetterzentrale.de/maps/',
+        'WetterzentraleEurope': {
+            label: 'Wetterzentrale E',
+            serverUrl: 'https://www.wetterzentrale.de/maps/GFSOPEU06_',
+            urlPattern: '${serverUrl}${imageIndex}${productType}${extension}',
             product: {
-                'GFSOPEU06_': {
+                '_2': {
                     label: 'T850hpa',
                     step: 3,
-                    extension: '_2.png',
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_1': {
+                    label: 'h500hpa',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_3': {
+                    label: 'Vítr 850hpa',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_34': {
+                    label: 'Teplotní odchylka 850hpa',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_5': {
+                    label: 'Teplota 2m',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                }
+            }
+        },
+        'WetterzentraleCentralEurope': {
+            label: 'Wetterzentrale CE',
+            serverUrl: 'https://www.wetterzentrale.de/maps/GFSOPME06_',
+            urlPattern: '${serverUrl}${imageIndex}${productType}${extension}',
+            product: {
+                '_9': {
+                    label: 'Vítr 10m',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_10': {
+                    label: 'Rosný bod',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_11': {
+                    label: 'CAPE',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_12': {
+                    label: 'Vysoká oblačnost',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_13': {
+                    label: 'Střední oblačnost',
+                    step: 3,
+                    extension: '.png',
+                    numberOfImages: 129
+                },
+                '_15': {
+                    label: 'Nízká oblačnost',
+                    step: 3,
+                    extension: '.png',
                     numberOfImages: 129
                 },
 
@@ -111,13 +180,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const slider = document.getElementById('slider');
     let currentImageIndex = 1; // Store the current slider position
 
-    function generateImageUrls(group, setType) {
+    function generateImageUrls(group, productType) {
         const urls = [];
-        const { serverUrl, product } = groups[group];
-        const { step, extension, numberOfImages } = product[setType];
+        const { serverUrl, product, urlPattern } = groups[group];
+        const { step, extension, numberOfImages } = product[productType];
         for (let i = 0; i < numberOfImages; i++) {
             const imageIndex = i * step;
-            urls.push(`${serverUrl}${setType}${imageIndex}${extension}`);
+            const url = urlPattern
+                .replace('${serverUrl}', serverUrl)
+                .replace('${productType}', productType)
+                .replace('${imageIndex}', imageIndex)
+                .replace('${extension}', extension);
+            urls.push(url);
         }
         return urls;
     }
@@ -155,8 +229,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    window.loadImages = function(setType) {
-        const imageUrls = generateImageUrls(currentGroup, setType);
+    window.loadImages = function(productType) {
+        const imageUrls = generateImageUrls(currentGroup, productType);
         slider.max = imageUrls.length; // Set the max value of the slider dynamically
         preloadImages(imageUrls, currentImageIndex); // Pass the current image index
 
