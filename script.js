@@ -168,17 +168,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     step: 3,
                     extension: '.png',
                     numberOfImages: 129
-                },
-
+                }
             }
         }
     };
 
     let currentGroup = 'icon-d2';
+    let currentProductType = 'oblc';
     const imageCache = {};
     const imageDisplay = document.getElementById('image-display');
     const slider = document.getElementById('slider');
+    const title = document.getElementById('title');
     let currentImageIndex = 1; // Store the current slider position
+
+    function updateTitle() {
+        const groupLabel = groups[currentGroup].label;
+        const productLabel = groups[currentGroup].product[currentProductType].label;
+        title.textContent = `${groupLabel} : ${productLabel}`;
+    }
 
     function generateImageUrls(group, productType) {
         const urls = [];
@@ -221,7 +228,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 menuItem.href = '#';
                 menuItem.textContent = product[key].label;
                 menuItem.onclick = function () {
+                    currentProductType = key;
                     loadImages(key);
+                    updateTitle();
                     toggleDropdown();
                 };
                 dropdownContent.appendChild(menuItem);
@@ -244,13 +253,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.setGroup = function(group) {
         currentGroup = group;
+        currentProductType = Object.keys(groups[group].product)[0];
         createDropdownMenu(); // Create menu items dynamically for the selected group
-        loadImages(Object.keys(groups[group].product)[0]); // Load the first set of images for the selected group
+        loadImages(currentProductType); // Load the first set of images for the selected group
+        updateTitle(); // Update the title with the current group and product labels
     };
 
     // Load the default set of images (ICON D2)
     createDropdownMenu();
-    loadImages('oblc');
+    loadImages(currentProductType);
+    updateTitle();
 
     // Update the image based on the slider value
     slider.addEventListener('input', (event) => {
