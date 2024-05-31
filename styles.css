@@ -131,6 +131,6 @@ header h1 {
 
 @media (orientation: landscape) {
     .slider-container, .product-grid {
-        max-width: 40%; /* Ensure layout adapts in landscape mode */
+        max-width: 90%; /* Ensure layout adapts in landscape mode */
     }
 }
