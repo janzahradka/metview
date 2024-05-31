@@ -11,23 +11,15 @@
 <body>
     <div class="menu-container">
         <div class="dropdown">
-            <button class="dropbtn" onclick="toggleDropdown()">Vyber vrstvu</button>
-            <div id="dropdown-content" class="dropdown-content">
-                <a href="#" onclick="loadImages('oblc'); toggleDropdown()">Oblačnost</a>
-                <a href="#" onclick="loadImages('pocasi'); toggleDropdown()">Srážky</a>
-                <a href="#" onclick="loadImages('cu'); toggleDropdown()">Čistá + Cu</a>
-                <a href="#" onclick="loadImages('bascu'); toggleDropdown()">Kumuly</a>
-                <a href="#" onclick="loadImages('tlcu'); toggleDropdown()">Toušťka Cu</a>
-                <a href="#" onclick="loadImages('tmp2m'); toggleDropdown()">Teplota 2m</a>
-                <a href="#" onclick="loadImages('vlhk700'); toggleDropdown()">Vlhkost 3km</a>
-                <a href="#" onclick="loadImages('vitr10m'); toggleDropdown()">Vítr 10m</a>
-                <a href="#" onclick="loadImages('narazy'); toggleDropdown()">Nárazy</a>
-                <a href="#" onclick="loadImages('vi950'); toggleDropdown()">Vítr 0,5km</a>
-                <a href="#" onclick="loadImages('vi850'); toggleDropdown()">Vítr 1,5km</a>
-                <a href="#" onclick="loadImages('vi700'); toggleDropdown()">Vítr 3km</a>
-                <a href="#" onclick="loadImages('vi600'); toggleDropdown()">Vítr 4km</a>
-                <a href="#" onclick="loadImages('vi500'); toggleDropdown()">Vítr 5,5km</a>
+            <button class="dropbtn" onclick="toggleGroupDropdown()">Select Group</button>
+            <div id="group-dropdown-content" class="dropdown-content">
+                <a href="#" onclick="setGroup('icon-d2'); toggleGroupDropdown()">ICON D2</a>
+                <a href="#" onclick="setGroup('wetterzentrale'); toggleGroupDropdown()">Wetterzentrale</a>
             </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn" onclick="toggleDropdown()">Vyber vrstvu</button>
+            <div id="dropdown-content" class="dropdown-content"></div>
         </div>
     </div>
     <div class="slider-container">
