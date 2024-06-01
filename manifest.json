@@ -1,8 +1,7 @@
 {
-  "name": "Horac Meteo",
-  "short_name": "Meteo",
-  "description": "Weather forecasting app",
-  "start_url": "/index.html",
+  "name": "MetView",
+  "short_name": "MetView",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
