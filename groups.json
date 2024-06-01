@@ -1,0 +1,247 @@
+{
+  "icon-d2-thermal": {
+    "label": "Horác ICON D2 Termika",
+    "serverUrl": "https://server1.meteopress.cz/icond2/",
+    "urlPattern": "${serverUrl}${productType}${imageIndex}${extension}",
+    "product": {
+      "oblc": {
+        "label": "Oblačnost",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "pocasi": {
+        "label": "Srážky",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "tmp2m": {
+        "label": "Teplota 2m",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "vitr10m": {
+        "label": "Vítr 10m",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "cu": {
+        "label": "Čistá + Cu",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "bascu": {
+        "label": "Kumuly",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "tlcu": {
+        "label": "Toušťka Cu",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "vi850": {
+        "label": "Vítr 1,5km",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "vlhk700": {
+        "label": "Vlhkost 3km",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      }
+    }
+  },
+  "icon-d2-wind": {
+    "label": "Horác ICON D2 Vítr",
+    "serverUrl": "https://server1.meteopress.cz/icond2/",
+    "urlPattern": "${serverUrl}${productType}${imageIndex}${extension}",
+    "product": {
+      "vitr10m": {
+        "label": "Vítr 10m",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "narazy": {
+        "label": "Nárazy",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "vi950": {
+        "label": "Vítr 0,5km",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "vi850": {
+        "label": "Vítr 1,5km",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "vi700": {
+        "label": "Vítr 3km",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "vi600": {
+        "label": "Vítr 4km",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      },
+      "vi500": {
+        "label": "Vítr 5,5km",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 48,
+        "thumbnailIndex": 10
+      }
+    }
+  },
+  "WetterzentraleEurope": {
+    "label": "Wetterzentrale E",
+    "serverUrl": "https://www.wetterzentrale.de/maps/GFSOPEU06_",
+    "urlPattern": "${serverUrl}${imageIndex}${productType}${extension}",
+    "product": {
+      "_2": {
+        "label": "Teplota 850hpa",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_1": {
+        "label": "Výška hladiny 500hpa",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_3": {
+        "label": "Vítr 850hpa",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_4": {
+        "label": "Srážky",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_34": {
+        "label": "Teplotní odchylka 850hpa",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_5": {
+        "label": "Teplota 2m",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      }
+    }
+  },
+  "WetterzentraleCentralEurope": {
+    "label": "Wetterzentrale CE",
+    "serverUrl": "https://www.wetterzentrale.de/maps/GFSOPME06_",
+    "urlPattern": "${serverUrl}${imageIndex}${productType}${extension}",
+    "product": {
+      "_4": {
+        "label": "Srážky",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_5": {
+        "label": "Teplota 2m",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_9": {
+        "label": "Vítr 10m",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_10": {
+        "label": "Rosný bod",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_11": {
+        "label": "CAPE",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_24": {
+        "label": "Celková oblačnost",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_12": {
+        "label": "Vysoká oblačnost",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_13": {
+        "label": "Střední oblačnost",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_15": {
+        "label": "Nízká oblačnost",
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      }
+    }
+  }
+}

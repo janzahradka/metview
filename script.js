@@ -1,251 +1,35 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const groups = {
-        'icon-d2-thermal': {
-            label: 'Horác ICON D2 Termika',
-            serverUrl: 'https://server1.meteopress.cz/icond2/',
-            urlPattern: '${serverUrl}${productType}${imageIndex}${extension}',
-            product: {
-                'oblc': {
-                    label: 'Oblačnost',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'pocasi': {
-                    label: 'Srážky',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'tmp2m': {
-                    label: 'Teplota 2m',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'vitr10m': {
-                    label: 'Vítr 10m',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'cu': {
-                    label: 'Čistá + Cu',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'bascu': {
-                    label: 'Kumuly',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'tlcu': {
-                    label: 'Toušťka Cu',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'vi850': {
-                    label: 'Vítr 1,5km',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'vlhk700': {
-                    label: 'Vlhkost 3km',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
+    let groups;
+    let disclaimer;
+
+    // Fetch groups and disclaimer data
+    fetch('groups.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        },
-        'icon-d2-wind': {
-            label: 'Horác ICON D2 Vítr',
-            serverUrl: 'https://server1.meteopress.cz/icond2/',
-            urlPattern: '${serverUrl}${productType}${imageIndex}${extension}',
-            product: {
-                'vitr10m': {
-                    label: 'Vítr 10m',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'narazy': {
-                    label: 'Nárazy',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'vi950': {
-                    label: 'Vítr 0,5km',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'vi850': {
-                    label: 'Vítr 1,5km',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'vi700': {
-                    label: 'Vítr 3km',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'vi600': {
-                    label: 'Vítr 4km',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                },
-                'vi500': {
-                    label: 'Vítr 5,5km',
-                    step: 1,
-                    extension: '.png',
-                    numberOfImages: 48,
-                    thumbnailIndex: 10
-                }
+            return response.json();
+        })
+        .then(data => {
+            groups = data;
+            console.log('Groups data loaded:', groups); // Debugging log
+            initApp(); // Initialize the app after fetching groups data
+        })
+        .catch(error => console.error('Error fetching groups.json:', error));
+
+    fetch('disclaimer.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        },
-        'WetterzentraleEurope': {
-            label: 'Wetterzentrale E',
-            serverUrl: 'https://www.wetterzentrale.de/maps/GFSOPEU06_',
-            urlPattern: '${serverUrl}${imageIndex}${productType}${extension}',
-            product: {
-                '_2': {
-                    label: 'Teplota 850hpa',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_1': {
-                    label: 'Výška hladiny 500hpa',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_3': {
-                    label: 'Vítr 850hpa',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_4': {
-                    label: 'Srážky',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_34': {
-                    label: 'Teplotní odchylka 850hpa',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_5': {
-                    label: 'Teplota 2m',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                }
-            }
-        },
-        'WetterzentraleCentralEurope': {
-            label: 'Wetterzentrale CE',
-            serverUrl: 'https://www.wetterzentrale.de/maps/GFSOPME06_',
-            urlPattern: '${serverUrl}${imageIndex}${productType}${extension}',
-            product: {
-                 '_4': {
-                    label: 'Srážky',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_5': {
-                    label: 'Teplota 2m',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_9': {
-                    label: 'Vítr 10m',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_10': {
-                    label: 'Rosný bod',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_11': {
-                    label: 'CAPE',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_24': {
-                    label: 'Celková oblačnost',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_12': {
-                    label: 'Vysoká oblačnost',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_13': {
-                    label: 'Střední oblačnost',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                },
-                '_15': {
-                    label: 'Nízká oblačnost',
-                    step: 3,
-                    extension: '.png',
-                    numberOfImages: 129,
-                    thumbnailIndex: 10
-                }
-            }
-        }
-    };
+            return response.json();
+        })
+        .then(data => {
+            disclaimer = data.text;
+            console.log('Disclaimer loaded:', disclaimer); // Debugging log
+            document.querySelector('.content p').textContent = disclaimer;
+        })
+        .catch(error => console.error('Error fetching disclaimer.json:', error));
 
     let currentGroup = 'icon-d2-thermal';
     let currentProductType = 'oblc';
@@ -255,6 +39,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const title = document.getElementById('title');
     const productGrid = document.getElementById('product-grid');
     let currentImageIndex = 1; // Store the current slider position
+
+    function initApp() {
+        createProductGrid();
+        loadImages(currentProductType);
+        updateTitle();
+
+        // Update the image based on the slider value
+        slider.addEventListener('input', (event) => {
+            currentImageIndex = parseInt(event.target.value, 10); // Update the current image index
+            imageDisplay.src = imageCache[currentImageIndex];
+        });
+    }
 
     function updateTitle() {
         const groupLabel = groups[currentGroup].label;
@@ -328,17 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
         loadImages(currentProductType); // Load the first set of images for the selected group
         updateTitle(); // Update the title with the current group and product labels
     };
-
-    // Load the default set of images (ICON D2)
-    createProductGrid();
-    loadImages(currentProductType);
-    updateTitle();
-
-    // Update the image based on the slider value
-    slider.addEventListener('input', (event) => {
-        currentImageIndex = parseInt(event.target.value, 10); // Update the current image index
-        imageDisplay.src = imageCache[currentImageIndex];
-    });
 
     window.toggleGroupDropdown = function() {
         const dropdownContent = document.getElementById('group-dropdown-content');
