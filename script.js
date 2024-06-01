@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentImageIndex = 1; // Store the current slider position
 
     function initApp() {
+        createGroupDropdown();
         createProductGrid();
         loadImages(currentProductType);
         updateTitle();
@@ -107,6 +108,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     updateTitle();
                 };
                 productGrid.appendChild(gridItem);
+            }
+        }
+    }
+
+    function createGroupDropdown() {
+        const dropdownContent = document.getElementById('group-dropdown-content');
+        dropdownContent.innerHTML = ''; // Clear existing dropdown items
+        for (const key in groups) {
+            if (groups.hasOwnProperty(key)) {
+                const group = groups[key];
+                const dropdownItem = document.createElement('a');
+                dropdownItem.href = '#';
+                dropdownItem.textContent = group.label;
+                dropdownItem.onclick = function () {
+                    setGroup(key);
+                    toggleGroupDropdown();
+                };
+                dropdownContent.appendChild(dropdownItem);
             }
         }
     }
