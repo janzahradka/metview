@@ -174,3 +174,14 @@ header h1 {
     position: absolute;
     width: 1px;
 }
+
+/* Footer styling */
+footer {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}

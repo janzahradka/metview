@@ -31,6 +31,9 @@
     <div class="content">
         <p></p>
     </div>
+    <footer>
+        <p>Version: <span id="version"></span></p> <!-- Footer to display version -->
+    </footer>
     <script src="script.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
@@ -42,6 +45,11 @@
           });
         });
       }
+
+      // Set the version number in the footer
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('version').textContent = 'v2'; // Change this version number as needed
+      });
     </script>
     <button id="install-button" style="display: none;">Install App</button>
     <script>

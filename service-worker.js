@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v2.1.1'; // Increment this value to force cache update
+const CACHE_VERSION = 'v2.1.2'; // Increment this value to force cache update
 const CACHE_NAME = `metview-cache-${CACHE_VERSION}`;
 const urlsToCache = [
     '/',
