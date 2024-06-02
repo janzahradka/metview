@@ -1,5 +1,17 @@
-const CACHE_VERSION = 'v2.1.2'; // Increment this value to force cache update
-const CACHE_NAME = `metview-cache-${CACHE_VERSION}`;
+let CACHE_VERSION = ''; // Initialize CACHE_VERSION as an empty string
+let CACHE_NAME = ''; // Initialize CACHE_NAME as an empty string
+
+// Fetch version from config.json
+fetch('/config.json')
+    .then(response => response.json())
+    .then(config => {
+        CACHE_VERSION = config.CACHE_VERSION;
+        CACHE_NAME = `metview-cache-${CACHE_VERSION}`;
+        // After setting CACHE_VERSION and CACHE_NAME, proceed with other tasks
+        self.skipWaiting();
+    })
+    .catch(error => console.error('Error fetching config.json:', error));
+
 const urlsToCache = [
     '/',
     `/index.html?version=${CACHE_VERSION}`, // Versioned index.html

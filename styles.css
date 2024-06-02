@@ -175,13 +175,12 @@ header h1 {
     width: 1px;
 }
 
-/* Footer styling */
-footer {
+/* Version info styling */
+.version-info {
     width: 100%;
     padding: 10px;
     background-color: #444;
     color: white;
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    margin-top: 20px;
 }
