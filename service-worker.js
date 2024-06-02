@@ -58,6 +58,14 @@ self.addEventListener('activate', event => {
                     }
                 })
             );
+        }).then(() => {
+            return self.clients.claim();
         })
     );
+});
+
+self.addEventListener('controllerchange', () => {
+    self.clients.matchAll().then(clients => {
+        clients.forEach(client => client.postMessage({ type: 'NEW_VERSION_AVAILABLE' }));
+    });
 });
