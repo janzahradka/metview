@@ -1,9 +1,10 @@
-const CACHE_NAME = 'metview-cache-v1';
+const CACHE_VERSION = 'v2'; // Increment this value to force cache update
+const CACHE_NAME = `metview-cache-${CACHE_VERSION}`;
 const urlsToCache = [
     '/',
-    '/index.html?v=1.0', // Versioned index.html
-    '/styles.css',
-    '/script.js',
+    `/index.html?version=${CACHE_VERSION}`, // Versioned index.html
+    `/styles.css?version=${CACHE_VERSION}`, // Versioned styles.css
+    `/script.js?version=${CACHE_VERSION}`, // Versioned script.js
     '/icons/icon-32x32.png',
     '/manifest.json',
     '/groups.json',
@@ -30,7 +31,8 @@ self.addEventListener('fetch', event => {
                     return response;
                 }
                 return fetch(event.request);
-            })
+            }
+        )
     );
 });
 
