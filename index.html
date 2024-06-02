@@ -5,9 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=0.5, maximum-scale=3">
     <title>MetView</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json"> <!-- Ensure the correct path here -->
+    <link rel="manifest" href="./manifest.json"> <!-- Ensure the correct path here -->
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="icons/icon-32x32.png" sizes="32x32" type="image/png">
+    <script>
+        // Fetch the version from config.json and set it dynamically
+        fetch('/config.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(config => {
+                console.log('Fetched version:', config.CACHE_VERSION); // Debugging log
+                window.CACHE_VERSION = config.CACHE_VERSION;
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.getElementById('version').textContent = window.CACHE_VERSION;
+                });
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    </script>
 </head>
 <body>
     <header>
@@ -35,22 +55,22 @@
     <script src="script.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, function(error) {
-            console.log('ServiceWorker registration failed: ', error);
-          });
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(error) {
+          console.log('ServiceWorker registration failed: ', error);
+        });
+
+        // Listen for messages from the service worker
+        navigator.serviceWorker.addEventListener('message', event => {
+          if (event.data && event.data.type === 'NEW_VERSION_AVAILABLE') {
+            const userConfirmed = confirm('A new version of the app is available. Do you want to reload to update?');
+            if (userConfirmed) {
+              window.location.reload();
+            }
+          }
         });
       }
-
-      // Fetch version from config.json and set it in the version-info div
-      fetch('/config.json')
-        .then(response => response.json())
-        .then(config => {
-          document.getElementById('version').textContent = config.CACHE_VERSION;
-        })
-        .catch(error => console.error('Error fetching config.json:', error));
     </script>
     <button id="install-button" style="display: none;">Install App</button>
     <script>
@@ -71,7 +91,8 @@
             } else {
               console.log('User dismissed the install prompt');
             }
-            deferredPrompt = null);
+            deferredPrompt = null;
+          });
         });
       });
     </script>
