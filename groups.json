@@ -125,8 +125,57 @@
       }
     }
   },
+  "flymet-thermaling": {
+    "label": "Flymet",
+    "serverUrl": "https://flymet.meteopress.cz/",
+    "urlPattern": "${serverUrl}${productType}${imageIndex}${extension}",
+    "product": {
+      "vyuzit/": {
+        "label": "Využitelnost",
+        "step": 1,
+        "extension": "task.png",
+        "numberOfImages": 7,
+        "thumbnailIndex": 1
+      },
+      "vlna/srzk": {
+        "label": "Vlna celá republika",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 50,
+        "thumbnailIndex": 10
+      },
+      "vlna1/srzk": {
+        "label": "Vlna Krko-Jese",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 50,
+        "thumbnailIndex": 10
+      },
+      "vlna2/srzk": {
+        "label": "Vlna Jeseníky",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 50,
+        "thumbnailIndex": 10
+      },
+      "vlna3/srzk": {
+        "label": "Vlna Krkonoše",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 50,
+        "thumbnailIndex": 10
+      },
+      "vlna4/srzk": {
+        "label": "Vlna Krušné Hory",
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 50,
+        "thumbnailIndex": 10
+      }
+    }
+  },
   "WetterzentraleEurope": {
-    "label": "Wetterzentrale E",
+    "label": "Wetterzentrale Evropa",
     "serverUrl": "https://www.wetterzentrale.de/maps/GFSOPEU06_",
     "urlPattern": "${serverUrl}${imageIndex}${productType}${extension}",
     "product": {
@@ -175,7 +224,7 @@
     }
   },
   "WetterzentraleCentralEurope": {
-    "label": "Wetterzentrale CE",
+    "label": "Wetterzentrale Střední Evropa",
     "serverUrl": "https://www.wetterzentrale.de/maps/GFSOPME06_",
     "urlPattern": "${serverUrl}${imageIndex}${productType}${extension}",
     "product": {
