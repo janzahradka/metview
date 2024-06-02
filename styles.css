@@ -46,7 +46,7 @@ header h1 {
 }
 
 #slider {
-    width: 100%;
+    width: 80%; /* Set the width of the slider to 80% of the image width */
     max-width: 1024px;
     box-sizing: border-box;
 }
@@ -93,9 +93,9 @@ header h1 {
     background-color: #f1f1f1;
 }
 
-.dropdown-content-up {
-    bottom: 100%;
-    margin-bottom: 10px;
+.dropdown-content-down {
+    top: 100%;
+    margin-top: 10px;
 }
 
 .dropdown:hover .dropbtn {

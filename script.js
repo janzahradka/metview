@@ -54,9 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateTitle() {
-        const groupLabel = groups[currentGroup].label;
         const productLabel = groups[currentGroup].product[currentProductType].label;
-        title.textContent = `${groupLabel} : ${productLabel}`;
+        title.textContent = `${productLabel}`;
     }
 
     function generateImageUrls(group, productType) {
@@ -113,6 +112,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createGroupDropdown() {
+        const dropdownButton = document.querySelector('.dropbtn');
+        dropdownButton.textContent = `${groups[currentGroup].label} ▼`; // Set the initial group name
+
         const dropdownContent = document.getElementById('group-dropdown-content');
         dropdownContent.innerHTML = ''; // Clear existing dropdown items
         for (const key in groups) {
@@ -139,9 +141,11 @@ document.addEventListener('DOMContentLoaded', function () {
     window.setGroup = function(group) {
         currentGroup = group;
         currentProductType = Object.keys(groups[group].product)[0];
+        const dropdownButton = document.querySelector('.dropbtn');
+        dropdownButton.textContent = `${groups[currentGroup].label} ▼`; // Update the group name in the button
         createProductGrid(); // Create the product grid dynamically for the selected group
         loadImages(currentProductType); // Load the first set of images for the selected group
-        updateTitle(); // Update the title with the current group and product labels
+        updateTitle(); // Update the title with the current product label
     };
 
     window.toggleGroupDropdown = function() {
