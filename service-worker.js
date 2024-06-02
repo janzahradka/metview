@@ -1,9 +1,9 @@
 const CACHE_NAME = 'metview-cache-v1';
 const urlsToCache = [
     '/',
-    '/index.html',
-    '/styles.css?v=1.0',
-    '/script.js?v=1.0',
+    '/index.html?v=1.0', // Versioned index.html
+    '/styles.css',
+    '/script.js',
     '/icons/icon-32x32.png',
     '/manifest.json',
     '/groups.json',
@@ -30,8 +30,7 @@ self.addEventListener('fetch', event => {
                     return response;
                 }
                 return fetch(event.request);
-            }
-        )
+            })
     );
 });
 
