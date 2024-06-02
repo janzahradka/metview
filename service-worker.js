@@ -3,12 +3,12 @@ const CACHE_NAME = `metview-cache-${CACHE_VERSION}`;
 const urlsToCache = [
     '/',
     `/index.html?version=${CACHE_VERSION}`, // Versioned index.html
-    `/styles.css?version=${CACHE_VERSION}`, // Versioned styles.css
-    `/script.js?version=${CACHE_VERSION}`, // Versioned script.js
-    '/icons/icon-32x32.png',
-    '/manifest.json',
-    '/groups.json',
-    '/disclaimer.json'
+    `/styles.css`, // Stylesheet
+    `/script.js`, // JavaScript file
+    '/icons/icon-32x32.png', // Icon
+    '/manifest.json', // Manifest
+    '/groups.json', // Groups data
+    '/disclaimer.json' // Disclaimer data
 ];
 
 self.addEventListener('install', event => {
@@ -31,8 +31,7 @@ self.addEventListener('fetch', event => {
                     return response;
                 }
                 return fetch(event.request);
-            }
-        )
+            })
     );
 });
 
