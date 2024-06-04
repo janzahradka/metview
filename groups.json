@@ -47,7 +47,7 @@
         "thumbnailIndex": 10
       },
       "tlcu": {
-        "label": "Toušťka Cu",
+        "label": "Toušťka kumulů",
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -82,7 +82,7 @@
         "thumbnailIndex": 10
       },
       "narazy": {
-        "label": "Nárazy",
+        "label": "Nárazy větru",
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -138,7 +138,7 @@
         "thumbnailIndex": 1
       },
       "vlna/srzk": {
-        "label": "Vlna celá republika",
+        "label": "Vlna ČR",
         "step": 1,
         "extension": ".png",
         "numberOfImages": 50,
@@ -208,7 +208,7 @@
         "thumbnailIndex": 10
       },
       "_34": {
-        "label": "Teplotní odchylka 850hpa",
+        "label": "Teplotní odchylka od dl. prům. 850hpa",
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -257,7 +257,7 @@
         "thumbnailIndex": 10
       },
       "_11": {
-        "label": "CAPE",
+        "label": "CAPE index",
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
