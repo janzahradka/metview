@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=0.5, maximum-scale=3">
     <title>MetView</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json"> <!-- Ensure the correct path here -->
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="icons/icon-32x32.png" sizes="32x32" type="image/png">
     <script>
@@ -20,9 +20,7 @@
             .then(config => {
                 console.log('Fetched version:', config.CACHE_VERSION); // Debugging log
                 window.CACHE_VERSION = config.CACHE_VERSION;
-                document.addEventListener('DOMContentLoaded', function() {
-                    document.getElementById('version').textContent = window.CACHE_VERSION;
-                });
+                document.getElementById('version').textContent = window.CACHE_VERSION;
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
@@ -37,7 +35,7 @@
         <div class="image-wrapper">
             <img id="image-display" src="" alt="Weather Image">
         </div>
-        <label for="slider" class="visually-hidden">Slider to select image index</label> <!-- Added label -->
+        <label for="slider" class="visually-hidden">Slider to select image index</label>
         <input type="range" id="slider" min="1" value="1" step="1">
     </div>
     <div class="menu-container">
