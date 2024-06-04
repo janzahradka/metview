@@ -9,7 +9,6 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="icons/icon-32x32.png" sizes="32x32" type="image/png">
     <script>
-        // Fetch the version from config.json and set it dynamically
         fetch('/config.json')
             .then(response => {
                 if (!response.ok) {
@@ -37,6 +36,7 @@
         </div>
         <label for="slider" class="visually-hidden">Slider to select image index</label>
         <input type="range" id="slider" min="1" value="1" step="1">
+        <button id="toggle-size-btn" onclick="toggleImageSize()"><< zvětšit >></button>
     </div>
     <div class="menu-container">
         <div class="dropdown">
@@ -49,7 +49,7 @@
     <div class="content">
         <p></p>
     </div>
-    <div class="version-info">Version: <span id="version"></span></div> <!-- Moved version info here -->
+    <div class="version-info">Version: <span id="version"></span></div>
     <script src="script.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
@@ -68,6 +68,19 @@
             }
           }
         });
+      }
+
+      function toggleImageSize() {
+        const sliderContainer = document.querySelector('.slider-container');
+        const toggleButton = document.getElementById('toggle-size-btn');
+        console.log('Toggle Image Size button clicked');
+        sliderContainer.classList.toggle('large');
+        if (sliderContainer.classList.contains('large')) {
+          toggleButton.textContent = '>> zmenšit <<';
+        } else {
+          toggleButton.textContent = '<< zvětšit >>';
+        }
+        console.log('Class list after toggle:', sliderContainer.classList);
       }
     </script>
     <button id="install-button" style="display: none;">Install App</button>
