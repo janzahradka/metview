@@ -33,14 +33,14 @@
         "thumbnailIndex": 10
       },
       "cu": {
-        "label": "Čistá + Cu",
+        "label": "Termika",
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
         "thumbnailIndex": 10
       },
       "bascu": {
-        "label": "Kumuly",
+        "label": "Základny kumulů",
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
