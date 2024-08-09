@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function () {
         imagesLoaded = 0; // Reset the counter
         clearTimeout(loaderTimeout); // Clear any previous timeout
         loaderTimeout = setTimeout(() => {
-            loader.classList.remove('hidden'); // Show loader after 2s delay
-        }, 2000); // 2 seconds delay
+            loader.classList.remove('hidden'); // Show loader after 1s delay
+        }, 1000); // 1 second delay
 
         imageUrls.forEach((url, index) => {
             const img = new Image();
