@@ -47,7 +47,7 @@
         "thumbnailIndex": 10
       },
       "tlcu": {
-        "label": "Toušťka kumulů",
+        "label": "Tloušťka kumulů",
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,

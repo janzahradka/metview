@@ -177,6 +177,13 @@ header h1 {
     }
 }
 
+/* Hide the zoom slider in mobile portrait mode */
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    .zoom-slider-container {
+        display: none;
+    }
+}
+
 /* Collapsible section */
 .collapsible {
     background-color: #444;
