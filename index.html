@@ -71,15 +71,6 @@
     </script>
 </head>
 <body>
-    <header>
-        <h1 id="title"></h1>
-    </header>
-    <div class="zoom-slider-container">
-        <button id="toggle-zoom-slider" onclick="toggleZoomSlider()">🔍</button>
-        <div id="zoom-slider-wrapper" class="hidden">
-            <input type="range" id="zoom-slider" min="1" max="10" step="1"> <!-- Value will be set from cookie -->
-        </div>
-    </div>
     <div class="slider-container">
         <div class="image-wrapper">
             <img id="image-display" src="" alt="Weather Image">
@@ -87,18 +78,26 @@
         <label for="slider" class="visually-hidden">Slider to select image index</label>
         <input type="range" id="slider" min="1" value="1" step="1">
     </div>
-    <div class="menu-container">
-        <div class="dropdown">
-            <button class="dropbtn" onclick="toggleGroupDropdown()">Vyber model ▼</button>
-            <div id="group-dropdown-content" class="dropdown-content dropdown-content-down"></div>
+
+    <div class="right-container">
+        <header>
+            <h1 id="title"></h1>
+        </header>
+        <div class="menu-container">
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleGroupDropdown()">Vyber model ▼</button>
+                <div id="group-dropdown-content" class="dropdown-content dropdown-content-down"></div>
+            </div>
         </div>
+        <div class="product-grid" id="product-grid"></div>
+        <button class="collapsible">Disclaimer</button>
+        <div class="content">
+            <p></p>
+        </div>
+        <div class="version-info">Version: <span id="version"></span></div>
+        <button id="install-button" style="display: none;">Install App</button>
     </div>
-    <div class="product-grid" id="product-grid"></div>
-    <button class="collapsible">Disclaimer</button>
-    <div class="content">
-        <p></p>
-    </div>
-    <div class="version-info">Version: <span id="version"></span></div>
+
     <script src="script.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
@@ -126,7 +125,6 @@
 
       document.getElementById('zoom-slider').addEventListener('input', handleZoom);
     </script>
-    <button id="install-button" style="display: none;">Install App</button>
     <script>
       let deferredPrompt;
       const installButton = document.getElementById('install-button');
@@ -151,4 +149,5 @@
       });
     </script>
 </body>
+
 </html>

@@ -12,49 +12,24 @@ body {
 
 header {
     width: 100%;
-    padding: 10px;
     background-color: #444;
     color: white;
-    text-align: center; /* Center align the header text */
+    text-align: center;
+    margin-top: 20px; /* Consistent margin with other elements */
+    /* Remove padding for better alignment */
 }
 
 header h1 {
     margin: 0;
+    padding: 0; /* Remove padding to align with other elements */
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-size: 24px;
+    max-width: 1024px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure width calculations include padding/border */
 }
 
-.zoom-slider-container {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    align-items: center;
-    background-color: #444;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-#toggle-zoom-slider {
-    background-color: #444;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    margin-right: 10px;
-}
-
-#zoom-slider-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-.hidden {
-    display: none;
-}
-
-#zoom-slider {
-    width: 100px;
-}
 
 .slider-container {
     display: flex;
@@ -64,38 +39,31 @@ header h1 {
     box-sizing: border-box;
     width: 100%;
     max-width: 1024px;
-    transition: max-width 0.5s ease-in-out; /* Smooth transition for resizing */
+    transition: max-width 0.5s ease-in-out;
 }
 
 .image-wrapper {
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    transition: width 0.5s ease-in-out; /* Smooth transition for resizing */
+    transition: width 0.5s ease-in-out;
 }
 
 #image-display {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Maintain aspect ratio and fit within the container */
+    object-fit: contain;
 }
 
 #slider {
-    width: 80%; /* Set the width of the slider to 80% of the image width */
+    width: 80%;
     max-width: 1024px;
     box-sizing: border-box;
 }
 
-#toggle-size-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
 .menu-container {
     display: flex;
-    justify-content: center; /* Center the Model menu */
+    justify-content: center;
     width: 100%;
     max-width: 1024px;
     margin-top: 30px;
@@ -146,7 +114,7 @@ header h1 {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Ensure three columns */
     gap: 10px;
     width: 100%;
     max-width: 1024px;
@@ -171,16 +139,47 @@ header h1 {
     margin-bottom: 10px;
 }
 
-@media (orientation: landscape) {
-    .slider-container, .product-grid {
-        max-width: 40%; /* Set max-width to 40% for landscape mode */
-    }
+/* Ensure consistent width for Product Grid, Disclaimer, and Version Info */
+.product-grid,
+.collapsible,
+.version-info {
+    width: 100%;
+    max-width: 1024px;
+    margin-top: 20px;
 }
 
-/* Hide the zoom slider in mobile portrait mode */
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-    .zoom-slider-container {
-        display: none;
+/* Landscape Mode Layout */
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+    body {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .slider-container {
+        max-width: 50%; /* Take up half the screen width */
+        margin-right: 20px;
+        align-self: flex-start; /* Align to the top */
+    }
+
+    .right-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 50%;
+        margin-left: 20px;
+    }
+
+    header,
+    .menu-container,
+    .product-grid,
+    .collapsible,
+    .version-info {
+        max-width: 100%; /* Take up full width of the right container */
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr); /* Ensure three columns even in landscape mode */
     }
 }
 
@@ -195,7 +194,6 @@ header h1 {
     text-align: center;
     outline: none;
     font-size: 16px;
-    margin-top: 20px;
 }
 
 .active, .collapsible:hover {
@@ -226,10 +224,7 @@ header h1 {
 
 /* Version info styling */
 .version-info {
-    width: 100%;
-    padding: 10px;
     background-color: #444;
     color: white;
     text-align: center;
-    margin-top: 20px;
 }
