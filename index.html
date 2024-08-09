@@ -61,7 +61,7 @@
             const zoomSlider = document.getElementById('zoom-slider');
             const sliderContainer = document.querySelector('.slider-container');
             const zoomLevel = zoomSlider.value;
-            sliderContainer.style.maxWidth = `${640 + (zoomLevel - 1) * 64}px`; // Allow more zooming out
+            sliderContainer.style.maxWidth = `${300 + (zoomLevel - 1) * 64}px`; // Allow more zooming out
             setCookie("zoomLevel", zoomLevel, 30); // Store zoom level in cookie
         }
 
