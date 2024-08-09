@@ -19,11 +19,55 @@
             .then(config => {
                 console.log('Fetched version:', config.CACHE_VERSION); // Debugging log
                 window.CACHE_VERSION = config.CACHE_VERSION;
-                document.getElementById('version').textContent = <window className="CACHE_VERSION"></window>
+                document.getElementById('version').textContent = window.CACHE_VERSION;
             })
             .catch(error => {
                 console.error('There has been a problem with your fetch operation:', error);
             });
+
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + d.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const cname = name + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(cname) == 0) {
+                    return c.substring(cname.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function applyZoomFromCookie() {
+            const zoomSlider = document.getElementById('zoom-slider');
+            const zoomLevel = getCookie("zoomLevel");
+            if (zoomLevel !== "") {
+                zoomSlider.value = zoomLevel;
+            }
+            handleZoom(); // Apply the zoom
+        }
+
+        function handleZoom() {
+            const zoomSlider = document.getElementById('zoom-slider');
+            const sliderContainer = document.querySelector('.slider-container');
+            const zoomLevel = zoomSlider.value;
+            sliderContainer.style.maxWidth = `${1024 + (zoomLevel - 5) * 128}px`; // Adjust the width based on zoom level
+            setCookie("zoomLevel", zoomLevel, 30); // Store zoom level in cookie
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            applyZoomFromCookie(); // Apply zoom level from cookie on page load
+        });
     </script>
 </head>
 <body>
@@ -33,7 +77,7 @@
     <div class="zoom-slider-container">
         <button id="toggle-zoom-slider" onclick="toggleZoomSlider()">🔍</button>
         <div id="zoom-slider-wrapper" class="hidden">
-            <input type="range" id="zoom-slider" min="1" max="10" value="3" step="1"> <!-- Default zoom level set to 3 -->
+            <input type="range" id="zoom-slider" min="1" max="10" step="1"> <!-- Value will be set from cookie -->
         </div>
     </div>
     <div class="slider-container">
@@ -79,18 +123,6 @@
         const zoomSliderWrapper = document.getElementById('zoom-slider-wrapper');
         zoomSliderWrapper.classList.toggle('hidden');
       }
-
-      function handleZoom() {
-        const zoomSlider = document.getElementById('zoom-slider');
-        const sliderContainer = document.querySelector('.slider-container');
-        const zoomLevel = zoomSlider.value;
-        sliderContainer.style.maxWidth = `${1024 + (zoomLevel - 5) * 128}px`; // Adjust the width based on zoom level
-      }
-
-      // Set default zoom level on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        handleZoom();
-      });
 
       document.getElementById('zoom-slider').addEventListener('input', handleZoom);
     </script>
