@@ -2,43 +2,38 @@ document.addEventListener('DOMContentLoaded', function () {
     let groups;
     let disclaimer;
 
-    // Fetch groups and disclaimer data
-    fetch('groups.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            groups = data;
-            console.log('Groups data loaded:', groups); // Debugging log
-            initApp(); // Initialize the app after fetching groups data
-        })
-        .catch(error => console.error('Error fetching groups.json:', error));
-
-    fetch('disclaimer.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            disclaimer = data.text;
-            console.log('Disclaimer loaded:', disclaimer); // Debugging log
-            document.querySelector('.content p').textContent = disclaimer;
-        })
-        .catch(error => console.error('Error fetching disclaimer.json:', error));
-
-    let currentGroup = 'icon-d2-thermal';
-    let currentProductType = 'oblc';
     const imageCache = {};
     const imageDisplay = document.getElementById('image-display');
     const slider = document.getElementById('slider');
     const title = document.getElementById('title');
     const productGrid = document.getElementById('product-grid');
+    const loader = document.getElementById('loader');
+    const progressBar = document.getElementById('loader-bar-progress');
+    let currentGroup = 'icon-d2-thermal';
+    let currentProductType = 'oblc';
     let currentImageIndex = 1; // Store the current slider position
+    let imagesLoaded = 0;
+    let loaderTimeout; // To store the timeout ID
+
+    // Fetch groups and disclaimer data
+    Promise.all([
+        fetch('groups.json')
+            .then(response => response.json())
+            .then(data => {
+                groups = data;
+                console.log('Groups data loaded:', groups); // Debugging log
+            })
+            .catch(error => console.error('Error fetching groups.json:', error)),
+
+        fetch('disclaimer.json')
+            .then(response => response.json())
+            .then(data => {
+                disclaimer = data.text;
+                console.log('Disclaimer loaded:', disclaimer); // Debugging log
+                document.querySelector('.content p').textContent = disclaimer;
+            })
+            .catch(error => console.error('Error fetching disclaimer.json:', error))
+    ]).then(initApp);
 
     function initApp() {
         createGroupDropdown();
@@ -46,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         loadImages(currentProductType);
         updateTitle();
 
-        // Update the image based on the slider value
         slider.addEventListener('input', (event) => {
             currentImageIndex = parseInt(event.target.value, 10); // Update the current image index
             imageDisplay.src = imageCache[currentImageIndex];
@@ -75,17 +69,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function preloadImages(imageUrls, initialImageIndex) {
+        imagesLoaded = 0; // Reset the counter
+        clearTimeout(loaderTimeout); // Clear any previous timeout
+        loaderTimeout = setTimeout(() => {
+            loader.classList.remove('hidden'); // Show loader after 2s delay
+        }, 2000); // 2 seconds delay
+
         imageUrls.forEach((url, index) => {
             const img = new Image();
             img.src = url;
             img.onload = () => {
+                imagesLoaded++;
+                updateProgressBar(imageUrls.length);
                 imageCache[index + 1] = img.src;
                 if (index + 1 === initialImageIndex) {
                     // Set the initial image based on the slider position
                     imageDisplay.src = img.src;
                 }
             };
+            img.onerror = () => {
+                imagesLoaded++;
+                updateProgressBar(imageUrls.length);
+            };
         });
+    }
+
+    function updateProgressBar(totalImages) {
+        const percentLoaded = (imagesLoaded / totalImages) * 100;
+        progressBar.style.width = percentLoaded + '%';
+        if (imagesLoaded === totalImages) {
+            clearTimeout(loaderTimeout); // Clear the timeout to prevent showing the loader
+            loader.classList.add('hidden'); // Hide the loader when all images are loaded
+        }
     }
 
     function createProductGrid() {
