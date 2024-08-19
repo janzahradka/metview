@@ -270,3 +270,53 @@ header h1 {
 .loader.hidden {
     display: none;
 }
+
+
+/* Customize the slider appearance */
+#slider {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    width: 80%;
+    max-width: 1024px;
+    height: 10px; /* Slider track height */
+    background: deepskyblue;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+    margin-top: 10px; /* Adds space above the slider */
+}
+
+#slider:hover {
+    opacity: 1; /* Full opacity on hover */
+}
+
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    width: 30px; /* Thumb width */
+    height: 20px; /* Thumb height */
+    background: blueviolet; /* Thumb color */
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners for rectangle */
+}
+
+#slider::-moz-range-thumb {
+    width: 30px; /* Thumb width */
+    height: 20px; /* Thumb height */
+    background: blueviolet; /* Thumb color */
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners for rectangle */
+}
+
+/* For larger devices, you may want to further adjust the slider thumb */
+@media only screen and (min-width: 768px) {
+    #slider::-webkit-slider-thumb,
+    #slider::-moz-range-thumb {
+        width: 40px; /* Larger thumb for easier tapping */
+        height: 24px; /* Adjust height accordingly */
+    }
+}
+
+
+
+
