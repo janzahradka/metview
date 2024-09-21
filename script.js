@@ -52,21 +52,45 @@ document.addEventListener('DOMContentLoaded', function () {
         title.textContent = `${productLabel}`;
     }
 
-    function generateImageUrls(group, productType) {
-        const urls = [];
-        const { serverUrl, product, urlPattern } = groups[group];
-        const { step, extension, numberOfImages } = product[productType];
-        for (let i = 0; i < numberOfImages; i++) {
-            const imageIndex = i * step;
-            const url = urlPattern
-                .replace('${serverUrl}', serverUrl)
-                .replace('${productType}', productType)
-                .replace('${imageIndex}', imageIndex)
-                .replace('${extension}', extension);
-            urls.push(url);
-        }
-        return urls;
+function generateImageUrls(group, productType, customParams = {}) {
+    const urls = [];
+    const { serverUrl, product, urlPattern } = groups[group];
+    const { start, step, extension, numberOfImages } = product[productType];
+
+    // Helper function to format date as YYYYMMDD
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}${month}${day}`;
     }
+
+    // Get today's date in YYYYMMDD format
+    const today = formatDate(new Date());
+
+    for (let i = start; i < numberOfImages; i++) {
+        const imageIndex = i * step;
+        let firstLeadZero = '';
+        if (imageIndex < 10) {
+            firstLeadZero = '0';
+        }
+        let secondLeadZero = '';
+        if (imageIndex < 100) {
+            secondLeadZero = '0';
+        }
+        let url = urlPattern
+            .replace('${serverUrl}', serverUrl)
+            .replace('${productType}', productType)
+            .replace('${imageIndex}', imageIndex)
+            .replace('${firstLeadZero}', firstLeadZero)
+            .replace('${firstLeadZero}', secondLeadZero)
+            .replace('${extension}', extension)
+            .replace('${today}', today);
+
+        urls.push(url);
+    }
+    return urls;
+}
 
     function preloadImages(imageUrls, initialImageIndex) {
         imagesLoaded = 0; // Reset the counter

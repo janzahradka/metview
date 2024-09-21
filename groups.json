@@ -6,6 +6,7 @@
     "product": {
       "oblc": {
         "label": "Oblačnost",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -13,6 +14,7 @@
       },
       "pocasi": {
         "label": "Srážky",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -20,6 +22,7 @@
       },
       "tmp2m": {
         "label": "Teplota 2m",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -27,6 +30,7 @@
       },
       "vitr10m": {
         "label": "Vítr 10m",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -34,6 +38,7 @@
       },
       "cu": {
         "label": "Termika",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -41,6 +46,7 @@
       },
       "bascu": {
         "label": "Základny kumulů",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -48,6 +54,7 @@
       },
       "tlcu": {
         "label": "Tloušťka kumulů",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -55,6 +62,7 @@
       },
       "vi850": {
         "label": "Vítr 1,5km",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -62,6 +70,7 @@
       },
       "vlhk700": {
         "label": "Vlhkost 3km",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -76,6 +85,7 @@
     "product": {
       "vitr10m": {
         "label": "Vítr 10m",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -83,6 +93,7 @@
       },
       "narazy": {
         "label": "Nárazy větru",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -90,6 +101,7 @@
       },
       "vi950": {
         "label": "Vítr 0,5km",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -97,6 +109,7 @@
       },
       "vi850": {
         "label": "Vítr 1,5km",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -104,6 +117,7 @@
       },
       "vi700": {
         "label": "Vítr 3km",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -111,6 +125,7 @@
       },
       "vi600": {
         "label": "Vítr 4km",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -118,6 +133,7 @@
       },
       "vi500": {
         "label": "Vítr 5,5km",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 48,
@@ -132,6 +148,7 @@
     "product": {
       "vyuzit/": {
         "label": "Využitelnost",
+        "start": 0,
         "step": 1,
         "extension": "task.png",
         "numberOfImages": 7,
@@ -139,6 +156,7 @@
       },
       "vlna/srzk": {
         "label": "Vlna ČR",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 50,
@@ -146,6 +164,7 @@
       },
       "vlna1/srzk": {
         "label": "Vlna Krko-Jese",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 50,
@@ -153,6 +172,7 @@
       },
       "vlna2/srzk": {
         "label": "Vlna Jeseníky",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 50,
@@ -160,6 +180,7 @@
       },
       "vlna3/srzk": {
         "label": "Vlna Krkonoše",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 50,
@@ -167,6 +188,7 @@
       },
       "vlna4/srzk": {
         "label": "Vlna Krušné Hory",
+        "start": 0,
         "step": 1,
         "extension": ".png",
         "numberOfImages": 50,
@@ -181,20 +203,15 @@
     "product": {
       "_2": {
         "label": "Teplota 850hpa",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
         "thumbnailIndex": 10
       },
-      "_1": {
-        "label": "Výška hladiny 500hpa",
-        "step": 3,
-        "extension": ".png",
-        "numberOfImages": 129,
-        "thumbnailIndex": 10
-      },
-      "_3": {
-        "label": "Vítr 850hpa",
+      "_33": {
+        "label": "Oblačnost",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -202,6 +219,23 @@
       },
       "_4": {
         "label": "Srážky",
+        "start": 0,
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_1": {
+        "label": "Výška hladiny 500hpa",
+        "start": 0,
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 129,
+        "thumbnailIndex": 10
+      },
+      "_3": {
+        "label": "Vítr 850hpa",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -209,6 +243,7 @@
       },
       "_34": {
         "label": "Teplotní odchylka od dlouhodobého průměru 850hpa",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -216,9 +251,89 @@
       },
       "_5": {
         "label": "Teplota 2m",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
+        "thumbnailIndex": 10
+      }
+    }
+  },
+  "WetterzentraleScandinavien": {
+    "label": "Skandinávie",
+    "serverUrl": "https://www.wetterzentrale.de/maps/ICOOPSC00_",
+    "urlPattern": "${serverUrl}${imageIndex}${productType}${extension}",
+    "product": {
+      "_4": {
+        "label": "Srážky",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
+        "thumbnailIndex": 10
+      },
+      "_5": {
+        "label": "Teplota 2m",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
+        "thumbnailIndex": 10
+      },
+      "_24": {
+        "label": "Celková oblačnost",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
+        "thumbnailIndex": 10
+      },
+      "_9": {
+        "label": "Vítr 10m",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
+        "thumbnailIndex": 10
+      },
+      "_24": {
+        "label": "Celková oblačnost",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
+        "thumbnailIndex": 10
+      },
+      "_12": {
+        "label": "Vysoká oblačnost",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
+        "thumbnailIndex": 10
+      },
+      "_13": {
+        "label": "Střední oblačnost",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
+        "thumbnailIndex": 10
+      },
+      "_15": {
+        "label": "Nízká oblačnost",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
+        "thumbnailIndex": 10
+      },
+      "_46": {
+        "label": "Význačné počasí",
+        "start": 6,
+        "step": 6,
+        "extension": ".png",
+        "numberOfImages": 30,
         "thumbnailIndex": 10
       }
     }
@@ -230,6 +345,7 @@
     "product": {
       "_4": {
         "label": "Srážky",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -237,6 +353,7 @@
       },
       "_5": {
         "label": "Teplota 2m",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -244,6 +361,7 @@
       },
       "_9": {
         "label": "Vítr 10m",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -251,6 +369,7 @@
       },
       "_10": {
         "label": "Rosný bod",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -258,6 +377,7 @@
       },
       "_11": {
         "label": "CAPE index",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -265,6 +385,7 @@
       },
       "_24": {
         "label": "Celková oblačnost",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -272,6 +393,7 @@
       },
       "_12": {
         "label": "Vysoká oblačnost",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -279,6 +401,7 @@
       },
       "_13": {
         "label": "Střední oblačnost",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
@@ -286,9 +409,25 @@
       },
       "_15": {
         "label": "Nízká oblačnost",
+        "start": 0,
         "step": 3,
         "extension": ".png",
         "numberOfImages": 129,
+        "thumbnailIndex": 10
+      }
+    }
+  },
+  "aladin": {
+    "label": "Aladin",
+    "urlExample": "https://www.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/2024091706/prec_public_rd_03.png",
+    "urlPattern": "https://www.chmi.cz/files/portal/docs/meteo/ov/aladin/results/public/mapy/data/${today}00/${productType}${firstLeadZero}${imageIndex}.png",
+    "product": {
+      "prec_public_rd_": {
+        "label": "Rain 3h",
+        "start": 3,
+        "step": 3,
+        "extension": ".png",
+        "numberOfImages": 24,
         "thumbnailIndex": 10
       }
     }

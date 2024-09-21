@@ -48,26 +48,8 @@
             return "";
         }
 
-        function applyZoomFromCookie() {
-            const zoomSlider = document.getElementById('zoom-slider');
-            const zoomLevel = getCookie("zoomLevel");
-            if (zoomLevel !== "") {
-                zoomSlider.value = zoomLevel;
-            }
-            handleZoom(); // Apply the zoom
-        }
 
-        function handleZoom() {
-            const zoomSlider = document.getElementById('zoom-slider');
-            const sliderContainer = document.querySelector('.slider-container');
-            const zoomLevel = zoomSlider.value;
-            sliderContainer.style.maxWidth = `${300 + (zoomLevel - 1) * 64}px`; // Allow more zooming out
-            setCookie("zoomLevel", zoomLevel, 30); // Store zoom level in cookie
-        }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            applyZoomFromCookie(); // Apply zoom level from cookie on page load
-        });
     </script>
 </head>
 <body>
@@ -124,12 +106,7 @@
         });
       }
 
-      function toggleZoomSlider() {
-        const zoomSliderWrapper = document.getElementById('zoom-slider-wrapper');
-        zoomSliderWrapper.classList.toggle('hidden');
-      }
-
-      document.getElementById('zoom-slider').addEventListener('input', handleZoom);
+        // Check if the app is installed
     </script>
     <script>
       let deferredPrompt;
