@@ -1,0 +1,544 @@
+/* ============================
+   fresh_style.css – modern, clean UI + Dark Mode
+   (bez změn rozložení, pouze vzhled)
+   ============================ */
+
+/* ---- Design tokens (Light) ---- */
+:root{
+  --bg: #f5f7fb;
+  --fg: #101418;
+  --muted: #6b7280;
+  --panel: #ffffff;
+  --brand: #4f46e5;
+  --brand-2: #22d3ee;
+  --border: rgba(16,20,24,0.08);
+  --shadow-sm: 0 1px 2px rgba(16,20,24,0.06);
+  --shadow-md: 0 8px 24px rgba(16,20,24,0.10);
+  --radius: 12px;
+  --radius-lg: 16px;
+  --focus: 0 0 0 3px rgba(79,70,229,0.35);
+
+  /* InfoText gradient */
+  --info-grad-start: #eef2ff; /* indigo-50 */
+  --info-grad-end:   #e0f2fe; /* sky-100 */
+  --link: #4f46e5;
+  --link-hover: #2563eb;
+}
+
+/* ---- Dark Mode tokens ---- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b1220;            /* velmi tmavé pozadí */
+    --fg: #e5e7eb;            /* světle šedý text */
+    --muted: #9ca3af;
+    --panel: #111827;         /* panel tmavý */
+    --brand: #8b5cf6;         /* jemnější akcent ve tmě */
+    --brand-2: #22d3ee;
+    --border: rgba(229,231,235,0.12);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
+    --focus: 0 0 0 3px rgba(139,92,246,0.35);
+
+    --info-grad-start: #1f2937; /* slate-800 */
+    --info-grad-end:   #0f172a; /* slate-900 */
+    --link: #93c5fd;
+    --link-hover: #bfdbfe;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference){
+  *{
+    transition:
+      background-color .25s ease,
+      color .25s ease,
+      border-color .25s ease,
+      box-shadow .25s ease,
+      transform .25s ease;
+  }
+}
+
+/* ---- Base ---- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow: auto;
+  position: relative;
+}
+
+/* ---- Top image + slider area ---- */
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1024px;
+  transition: max-width 0.5s ease-in-out;
+}
+
+.image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  transition: width 0.5s ease-in-out;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+#image-display {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---- Slider ---- */
+#slider {
+  -webkit-appearance: none; appearance: none;
+  width: 100%;
+  max-width: 1024px;
+  height: 8px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  border-radius: 999px;
+  outline: none;
+  opacity: .95;
+  margin-top: 10px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+#slider:hover { opacity: 1; }
+#slider::-webkit-slider-thumb,
+#slider::-moz-range-thumb {
+  width: 28px;
+  height: 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  #slider::-webkit-slider-thumb,
+  #slider::-moz-range-thumb {
+    width: 40px;
+    height: 24px;
+  }
+}
+
+/* ---- Right column container ---- */
+.right-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin-left: 20px;
+  gap: 16px;
+  width: 100%;
+}
+
+/* ---- Header + Title ---- */
+header {
+  width: 100%;
+  background: var(--panel);
+  color: var(--fg);
+  text-align: center;                 /* <- Title na střed */
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+header h1 {
+  margin: 0;
+  padding: 18px 20px;
+  font-weight: 700;
+  letter-spacing: .2px;
+  font-size: clamp(20px, 2vw, 28px);
+}
+
+/* ---- InfoText: funguje jak uvnitř headeru, tak hned za ním ---- */
+header .group-info-text,
+header + .group-info-text {
+  background: linear-gradient(180deg, var(--info-grad-start), var(--info-grad-end));
+  color: var(--fg);
+  font-size: 14px;
+  text-align: center;
+  padding: 8px 14px;
+  border-top: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* Když je InfoText uvnitř headeru → napojí se dole a zakulatí jen spodní rohy */
+header .group-info-text{
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  margin: 0;
+}
+
+/* Když je InfoText hned za headerem → vizuálně ho „přilepíme“ k headeru */
+header + .group-info-text{
+  margin-top: -8px;                         /* přitáhne se k headeru */
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Obecné linky v InfoTextu */
+.group-info-text a{
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: none;
+}
+.group-info-text a:hover{
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* ---- Menu / Dropdown ---- */
+.menu-container {
+  display: flex;
+  justify-content: center;  /* dropdown na střed */
+  width: 100%;
+  max-width: 1024px;
+  margin-top: 8px;
+}
+.dropdown { position: relative; display: inline-block; }
+.dropbtn {
+  background: var(--panel);
+  color: var(--fg);
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.dropdown:hover .dropbtn {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--panel);
+  min-width: 220px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  padding: 6px;
+}
+.dropdown-content-down { top: 100%; margin-top: 10px; }
+.dropdown-content a {
+  color: var(--fg);
+  padding: 10px 12px;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+}
+.dropdown-content a:hover { background: rgba(0,0,0,0.04); }
+@media (prefers-color-scheme: dark){
+  .dropdown-content a:hover { background: rgba(255,255,255,0.06); }
+}
+
+/* ---- Product grid (3 sloupce i mobil) ---- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 1024px;
+  margin-top: 8px;
+}
+.product-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.product-grid-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.product-grid-item img {
+  width: 100%;
+  max-width: 120px;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.12));
+}
+
+/* ---- Collapsible (Disclaimer) ---- */
+.collapsible {
+  background: var(--panel);
+  color: var(--fg);
+  cursor: pointer;
+  padding: 10px 14px;
+  width: 100%;
+  border: 1px solid var(--border);
+  text-align: left;
+  outline: none;
+  font-size: 14px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.active, .collapsible:hover { box-shadow: var(--shadow-md); }
+.content {
+  padding: 12px 14px;
+  display: none;
+  overflow: hidden;
+  background: var(--panel);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+/* ---- Accessibility ---- */
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* ---- Version badge ---- */
+.version-info {
+  display: inline-block;
+  background: var(--panel);
+  color: var(--muted);
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- Loader (fade-out, neblokuje obsah po skrytí) ---- */
+.loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  backdrop-filter: blur(4px);
+  background-color: rgba(16,20,24,0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  opacity: 1;              /* pro fade-out */
+  visibility: visible;     /* pro fade-out */
+  transition: opacity 0.3s ease; /* plynulé zmizení */
+}
+.loader-text { margin-bottom: 20px; }
+.loader-bar {
+  width: 80%;
+  max-width: 400px;
+  height: 20px;
+  background: #e5e7eb;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.loader-bar-progress {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  transition: width 0.4s ease;
+}
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* ---- Landscape Mode Layout (zachovává původní chování) ---- */
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+  body {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .slider-container {
+    max-width: 50%;
+    margin-right: 20px;
+    align-self: flex-start;
+  }
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin-left: 20px;
+  }
+  header,
+  .menu-container,
+  .product-grid,
+  .collapsible,
+  .version-info {
+    max-width: 100%;
+  }
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---- Mobile compact (≤ 640px) – 3 sloupce + kompaktní prvky ---- */
+@media (max-width: 640px) {
+  .right-container {
+    max-width: 100%;
+    margin-left: 0;
+    gap: 10px;
+    align-items: center;
+  }
+  header { margin-top: 8px; }
+  header h1 {
+    padding: 10px 12px;
+    font-size: clamp(18px, 5vw, 22px);
+  }
+  /* InfoText uvnitř headeru nebo hned za ním – menší padding */
+  header .group-info-text,
+  header + .group-info-text {
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 0 0 12px 12px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .menu-container {
+    margin-top: 6px;
+    justify-content: center;
+  }
+  .dropbtn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .product-grid-item { padding: 8px; }
+  .product-grid-item img {
+    max-width: 80px;
+    margin-bottom: 4px;
+  }
+  .collapsible { padding: 8px 12px; font-size: 13px; }
+  .content { padding: 10px 12px; }
+  .version-info { padding: 4px 8px; font-size: 11px; }
+}
+
+/* ---- Focus rings (klávesnice / přístupnost) ---- */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+.dropbtn:focus-visible,
+.dropdown-content a:focus-visible,
+.collapsible:focus-visible,
+.product-grid-item:focus-visible {
+  box-shadow: var(--focus);
+}
+
+/* === Fix: InfoText stejně široký jako Title/Header (všude) === */
+header .group-info-text,
+header + .group-info-text {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;                /* žádné zúžení ani centrování */
+  border-top: 1px solid var(--border);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+/* Když je InfoText HNED ZA headerem, „přicvakni“ ho vizuálně k headeru */
+header + .group-info-text {
+  margin-top: -1px;         /* překryje border-spáru, bez odsazení dolů */
+  border-top: none;         /* aby nebyla dvojitá linka mezi Title a InfoText */
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* === Mobilní přepis: nikdy InfoText nezúžuj proti headeru === */
+@media (max-width: 640px) {
+  header .group-info-text,
+  header + .group-info-text {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;              /* zruší předchozí max-width: 90% atd. */
+    padding: 6px 10px;      /* kompaktnější, ale celá šířka */
+    border-radius: 0 0 12px 12px;
+  }
+}
+
+/* === Slider – větší jezdec pro pohodlné ovládání na mobilech === */
+
+/* Vzhled (všude) */
+#slider::-webkit-slider-thumb,
+#slider::-moz-range-thumb {
+  width: 40px;          /* větší plocha */
+  height: 28px;
+  border-radius: 8px;
+  background: var(--panel);
+  border: 2px solid var(--brand);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+/* Hover/focus efekt */
+#slider:hover::-webkit-slider-thumb,
+#slider:hover::-moz-range-thumb,
+#slider:focus-visible::-webkit-slider-thumb,
+#slider:focus-visible::-moz-range-thumb {
+  transform: scale(1.08);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.35);
+}
+
+/* Mobile: ještě trochu větší plocha pro prst */
+@media (max-width: 640px) {
+  #slider {
+    height: 10px; /* o trochu silnější kolejnice */
+  }
+  #slider::-webkit-slider-thumb,
+  #slider::-moz-range-thumb {
+    width: 48px;
+    height: 32px;
+    border-radius: 10px;
+  }
+}
+
+/* Dark mode kontrast pro jezdec */
+@media (prefers-color-scheme: dark) {
+  #slider::-webkit-slider-thumb,
+  #slider::-moz-range-thumb {
+    background: #1f2937;
+    border: 2px solid var(--brand-2);
+  }
+}
