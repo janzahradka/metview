@@ -542,3 +542,96 @@ header + .group-info-text {
     border: 2px solid var(--brand-2);
   }
 }
+
+/* === Slider: obdélníkový jezdec s oválnými rohy (mobile-friendly) === */
+
+/* Kolejnice – jednotný vzhled všude */
+#slider{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  max-width: 1024px;
+  height: 10px; /* výška kolejnice */
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  border-radius: 999px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+
+/* WebKit (Chrome, Safari, iOS) – track i thumb */
+#slider::-webkit-slider-runnable-track{
+  height: 10px;                 /* stejné jako #slider height */
+  background: transparent;      /* barvu řeší rodič */
+  border-radius: 999px;
+}
+#slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;                  /* obdélník */
+  height: 28px;
+  border-radius: 8px;           /* oválné rohy */
+  background: var(--panel);
+  border: 2px solid var(--brand);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  cursor: pointer;
+
+  /* zarovnání vyššího jezdce doprostřed kolejnice:
+     (track 10px - thumb 28px) / 2 = -9px */
+  margin-top: -9px;
+}
+
+/* Firefox */
+#slider::-moz-range-track{
+  height: 10px;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+}
+#slider::-moz-range-thumb{
+  width: 40px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--panel);
+  border: 2px solid var(--brand);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  cursor: pointer;
+}
+
+/* Hover/Focus efekt (oba enginy) */
+#slider:hover::-webkit-slider-thumb,
+#slider:focus-visible::-webkit-slider-thumb{
+  transform: scale(1.06);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.35);
+}
+#slider:hover::-moz-range-thumb,
+#slider:focus-visible::-moz-range-thumb{
+  transform: scale(1.06);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.35);
+}
+
+/* Mobil: ještě větší plocha pro prst */
+@media (max-width: 640px){
+  #slider{ height: 12px; }
+  #slider::-webkit-slider-runnable-track{ height: 12px; }
+  #slider::-webkit-slider-thumb{
+    width: 48px;
+    height: 32px;
+    border-radius: 10px;
+    /* (12 - 32)/2 = -10px */
+    margin-top: -10px;
+  }
+  #slider::-moz-range-thumb{
+    width: 48px;
+    height: 32px;
+    border-radius: 10px;
+  }
+}
+
+/* Dark mode kontrast jezdce */
+@media (prefers-color-scheme: dark){
+  #slider::-webkit-slider-thumb,
+  #slider::-moz-range-thumb{
+    background: #1f2937;
+    border-color: var(--brand-2);
+  }
+}
