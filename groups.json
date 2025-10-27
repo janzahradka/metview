@@ -204,6 +204,14 @@
         "extension": ".png",
         "numberOfImages": 49,
         "thumbnailIndex": 10
+      },
+      "vlna7/srzk": {
+        "label": "Vlna Ještěd",
+        "start": 1,
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 23,
+        "thumbnailIndex": 10
       }
     }
   },
