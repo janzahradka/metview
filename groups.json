@@ -3,6 +3,7 @@
     "label": "Horác ICON D2 Termika",
     "serverUrl": "https://server1.meteopress.cz/icond2/",
     "urlPattern": "${serverUrl}${productType}${imageIndex}${extension}",
+    "infoText": "ℹ️ líbí se vám ICON D2 data? <a href='https://flymet.meteopress.cz/kontakt.php' target='_blank'>Přispějte Horácovi na rozvoj</a> 💸.",
     "product": {
       "oblc": {
         "label": "Oblačnost",
@@ -82,6 +83,7 @@
     "label": "Horác ICON D2 Vítr",
     "serverUrl": "https://server1.meteopress.cz/icond2/",
     "urlPattern": "${serverUrl}${productType}${imageIndex}${extension}",
+   "infoText": "ℹ️ líbí se vám ICON D2 data? <a href='https://flymet.meteopress.cz/kontakt.php' target='_blank'>Přispějte Horácovi na rozvoj</a> 💸.",
     "product": {
       "vitr10m": {
         "label": "Vítr 10m",
@@ -145,7 +147,8 @@
     "label": "Flymet",
     "serverUrl": "https://flymet.meteopress.cz/",
     "urlPattern": "${serverUrl}${productType}${imageIndex}${extension}",
-    "product": {
+    "infoText": "ℹ️ líbí se vám Flymet data? <a href='https://flymet.meteopress.cz/kontakt.php' target='_blank'>Přispějte Horácovi na rozvoj</a> 💸.",
+     "product": {
       "vyuzit/": {
         "label": "Využitelnost",
         "start": 0,

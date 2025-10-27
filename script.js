@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const imageDisplay = document.getElementById('image-display');
     const slider = document.getElementById('slider');
     const title = document.getElementById('title');
+    const groupInfoText = document.getElementById('group-info-text');
     const productGrid = document.getElementById('product-grid');
     const loader = document.getElementById('loader');
     const progressBar = document.getElementById('loader-bar-progress');
@@ -40,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         createProductGrid();
         loadImages(currentProductType);
         updateTitle();
-
+        updateGroupInfoText();
         slider.addEventListener('input', (event) => {
             currentImageIndex = parseInt(event.target.value, 10); // Update the current image index
             imageDisplay.src = imageCache[currentImageIndex];
@@ -51,6 +52,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const productLabel = groups[currentGroup].product[currentProductType].label;
         title.textContent = `${productLabel}`;
     }
+
+    function updateGroupInfoText() {
+    const info = groups[currentGroup]?.infoText; // ← správný klíč
+    if (info) {
+        groupInfoText.innerHTML = info; // infoText obsahuje HTML (odkaz), proto innerHTML
+        groupInfoText.style.display = 'block';
+    } else {
+        groupInfoText.textContent = '';
+        groupInfoText.style.display = 'none';
+    }
+}
+
 
 function generateImageUrls(group, productType, customParams = {}) {
     const urls = [];
@@ -185,6 +198,7 @@ function generateImageUrls(group, productType, customParams = {}) {
         createProductGrid(); // Create the product grid dynamically for the selected group
         loadImages(currentProductType); // Load the first set of images for the selected group
         updateTitle(); // Update the title with the current product label
+        updateGroupInfoText();
     };
 
     window.toggleGroupDropdown = function() {
