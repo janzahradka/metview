@@ -156,42 +156,50 @@
       },
       "vlna/srzk": {
         "label": "Vlna ČR",
-        "start": 0,
+        "start": 1,
         "step": 1,
         "extension": ".png",
-        "numberOfImages": 50,
+        "numberOfImages": 49,
         "thumbnailIndex": 10
       },
       "vlna1/srzk": {
         "label": "Vlna Krko-Jese",
-        "start": 0,
+        "start": 1,
         "step": 1,
         "extension": ".png",
-        "numberOfImages": 50,
+        "numberOfImages": 49,
         "thumbnailIndex": 10
       },
       "vlna2/srzk": {
         "label": "Vlna Jeseníky",
-        "start": 0,
+        "start": 1,
         "step": 1,
         "extension": ".png",
-        "numberOfImages": 50,
+        "numberOfImages": 49,
         "thumbnailIndex": 10
       },
       "vlna3/srzk": {
         "label": "Vlna Krkonoše",
-        "start": 0,
+        "start": 1,
         "step": 1,
         "extension": ".png",
-        "numberOfImages": 50,
+        "numberOfImages": 49,
         "thumbnailIndex": 10
       },
       "vlna4/srzk": {
         "label": "Vlna Krušné Hory",
+        "start": 1,
+        "step": 1,
+        "extension": ".png",
+        "numberOfImages": 49,
+        "thumbnailIndex": 10
+      },
+      "svah1/srzk": {
+        "label": "Svah Podhořany",
         "start": 0,
         "step": 1,
         "extension": ".png",
-        "numberOfImages": 50,
+        "numberOfImages": 49,
         "thumbnailIndex": 10
       }
     }
